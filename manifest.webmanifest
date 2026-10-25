@@ -1,0 +1,19 @@
+{
+  "name": "Dar-e-Itr",
+  "short_name": "Dar-e-Itr",
+  "description": "Attar and perfume from J.P. Nagar, Bangalore.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#141312",
+  "theme_color": "#141312",
+  "lang": "en-IN",
+  "icons": [
+    {
+      "src": "/icon.webp",
+      "sizes": "512x512",
+      "type": "image/webp",
+      "purpose": "any"
+    }
+  ]
+}
