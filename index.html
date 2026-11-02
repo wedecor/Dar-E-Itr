@@ -1,7 +1,13 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
 <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Dar-e-Itr</title>
 <meta name="claude:viewport-fit-sides" content="cover">
 <meta name="description" content="Dar-e-Itr: alcohol-free attar and eau de parfum built on oud, rose, saffron and amber. Delivered across India, cash on delivery available.">
+<meta name="theme-color" content="#141312">
+<link rel="icon" href="img/icon.webp" type="image/webp">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400;1,6..72,500&display=swap">
@@ -109,12 +115,18 @@ nav.main a[aria-current="page"]{color:var(--fg);box-shadow:0 2px 0 var(--accent)
 .swatches button[aria-pressed="true"]{border-color:var(--accent);box-shadow:inset 0 0 0 1px var(--accent)}
 @media (max-width:900px){
   .hero>.in{grid-template-columns:minmax(0,1fr);min-height:0;gap:0}
-  .hero-stage{order:1;padding-top:12px}
-  .hero-copy{order:2;padding:28px 0 40px}
-  .stage-art{height:360px;min-height:0}
-  .swatches{gap:6px}.swatches button{width:36px;height:36px;padding:3px}
-  .trust{grid-template-columns:minmax(0,1fr)}
-  .trust div+div{border-left:0;padding-left:0;border-top:1px solid var(--rule);margin-top:10px;padding-top:10px}
+  .hero-copy{order:1;padding:30px 0 6px;gap:18px}
+  .hero-copy h1{font-size:clamp(34px,9.6vw,46px)}
+  .hero-copy p{font-size:15.5px}
+  .cta .btn{flex:1 1 0;padding-inline:12px}
+  .hero-stage{order:2;padding:8px 0 30px}
+  .stage-art{height:330px;min-height:0}
+  .swatches{gap:5px}.swatches button{width:40px;height:40px;padding:4px}
+  .trust{margin-top:6px}
+  .trust div{padding-right:10px}
+  .trust div+div{padding-left:10px}
+  .trust b{font-size:13px;line-height:1.35}
+  .trust span{display:none}
 }
 
 /* ticker */
@@ -137,7 +149,7 @@ nav.main a[aria-current="page"]{color:var(--fg);box-shadow:0 2px 0 var(--accent)
 .cat{border-right:1px solid var(--rule);border-bottom:1px solid var(--rule);text-decoration:none;display:flex;flex-direction:column;min-width:0}
 .cat .im{aspect-ratio:10/9;overflow:hidden;background:var(--surface)}
 .cat img{width:100%;height:100%;object-fit:cover;transition:transform .6s cubic-bezier(.25,1,.5,1)}
-.cat:hover img{transform:scale(1.04)}
+@media (hover:hover){.cat:hover img{transform:scale(1.04)}}
 .cat .tx{padding:14px 16px 18px;display:flex;flex-direction:column;gap:2px}
 .cat h3{font-size:22px}
 .cat .tx span{font-size:13px;color:var(--muted)}
@@ -149,7 +161,7 @@ nav.main a[aria-current="page"]{color:var(--fg);box-shadow:0 2px 0 var(--accent)
 .card{position:relative;border-right:1px solid var(--rule);border-bottom:1px solid var(--rule);display:flex;flex-direction:column;min-width:0}
 .tile{display:block;aspect-ratio:10/9;overflow:hidden;position:relative;background:var(--surface)}
 .tile img{width:100%;height:100%;object-fit:cover;transition:transform .6s cubic-bezier(.25,1,.5,1)}
-.card:hover .tile img{transform:scale(1.04)}
+@media (hover:hover){.card:hover .tile img{transform:scale(1.04)}}
 .tag{position:absolute;left:12px;top:11px;color:#c9bdae;z-index:1}
 .wish{position:absolute;top:8px;right:8px;z-index:2;width:40px;height:40px;border:0;border-radius:3px;background:rgba(15,14,13,.5);color:#efe7dc;display:flex;align-items:center;justify-content:center;cursor:pointer}
 .wish:hover{background:rgba(15,14,13,.8)}
@@ -433,7 +445,24 @@ nav.main a.mob{display:none}
 @media (max-width:380px){.ib.wl{display:none}}
 .sbar input::-webkit-search-cancel-button{display:none}
 
+/* touch devices and phones */
+html{-webkit-text-size-adjust:100%;text-size-adjust:100%}
+a,button,summary,label{-webkit-tap-highlight-color:transparent}
+@media (max-width:900px){
+  input,select,textarea,.filters select,.filters input,.field input,.field select,.field textarea,.pin input,.nl input{font-size:16px}
+  .crumbs a{padding:10px 0}
+  .crumbs{margin-bottom:14px}
+  .fgrid li a{padding:10px 0}
+  .wish{width:40px;height:40px}
+  .stepper button{width:44px}
+  .page{padding-top:18px}
+  body.on-product footer{padding-bottom:calc(96px + env(safe-area-inset-bottom,0px))}
+}
+@media (max-width:420px){.swatches{gap:4px}.swatches button{width:38px;height:38px;padding:3px}}
+
 </style>
+</head>
+<body>
 <div id="intro" role="img" aria-label="Dar-e-Itr logo assembling" hidden><canvas id="cv"></canvas><button id="skip" type="button">Skip</button></div>
 
 <div class="bar"><div class="in"><span id="barShip"></span><span>Cash on delivery available</span><span id="barRet"></span></div></div>
@@ -1192,7 +1221,7 @@ function show(tok){
   else if(CATS[tok]){v="shop";F.cat=tok}
   else if(VIEWS[tok])v=tok;
   else if(POL[tok])v="legal";
-  curView=v;curTok=tok;
+  curView=v;curTok=tok;document.body.classList.toggle("on-product",v==="product");
   document.querySelectorAll("main>[data-view]").forEach(el=>el.hidden=el.dataset.view!==v);
   const navTok=v==="product"?(p.t==="attar"?"attars":p.t==="edp"?"perfumes":p.id==="DEI-S01"?"p-DEI-S01":"gifts"):v==="shop"?F.cat:tok;
   document.querySelectorAll("nav.main a").forEach(a=>{a.getAttribute("href").slice(1)===navTok?a.setAttribute("aria-current","page"):a.removeAttribute("aria-current")});
@@ -1225,7 +1254,8 @@ document.addEventListener("click",e=>{
     try{navigator.clipboard.writeText(el.textContent).then(done,sel)}catch(_){sel()}}
 });
 document.addEventListener("keydown",e=>{if(e.key==="Escape"){if(!sEl.hidden)openSearch(false);else openBag(false)}});
-document.getElementById("menuBtn").onclick=e=>{const n=document.getElementById("nav");const o=n.classList.toggle("open");e.currentTarget.setAttribute("aria-expanded",o)};
+document.getElementById("menuBtn").onclick=e=>{e.stopPropagation();const n=document.getElementById("nav");const o=n.classList.toggle("open");e.currentTarget.setAttribute("aria-expanded",o)};
+document.addEventListener("pointerdown",e=>{const n=document.getElementById("nav");if(n.classList.contains("open")&&!e.target.closest("#nav,#menuBtn")){n.classList.remove("open");document.getElementById("menuBtn").setAttribute("aria-expanded","false")}});
 
 /* ================= Hero: live 3D bottle ================= */
 function startGL(){
@@ -1236,7 +1266,7 @@ function startGL(){
   try{
     G=makeGLB(T);
     r=new T.WebGLRenderer({canvas:cv,antialias:true,alpha:true});
-    r.toneMapping=T.ACESFilmicToneMapping;r.toneMappingExposure=1.05;r.setPixelRatio(Math.min(devicePixelRatio||1,2));
+    r.toneMapping=T.ACESFilmicToneMapping;r.toneMappingExposure=1.05;r.setPixelRatio(Math.min(devicePixelRatio||1,innerWidth<700?1.5:2));
     scene=new T.Scene();scene.environment=G.env(r);G.key(scene);
     cam=new T.PerspectiveCamera(27,1,.1,60);cam.position.set(0,1.5,9.4);cam.lookAt(0,1.45,0);
   }catch(e){return}
@@ -1371,3 +1401,5 @@ show(location.hash.slice(1));
 if(matchMedia("(prefers-reduced-motion:reduce)").matches||navigator.webdriver||seen||location.hash.length>1){setTimeout(startGL,300)}else{runIntro()}}
 
 </script>
+</body>
+</html>
